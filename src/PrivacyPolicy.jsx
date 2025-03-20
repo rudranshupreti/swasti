@@ -19,86 +19,78 @@ const PrivacyPolicy = () => {
 
   return (
     <>
-      <nav className="bg-white shadow-md px-3 py-1 flex items-center justify-between fixed top-0 left-0 w-full z-50">
-        {/* Logo Section */}
-        <div className="flex items-center space-x-6 ml-10">
-          <div className="flex items-center ml-5">
-            <img src={logo} alt="Swasti Bharat" className="h-15 w-13" />
-            <span className="text-xl ml-6 font-bold text-[#4C1D3D]">
-              Swasti Bharat
-            </span>
-          </div>
+     <nav className="bg-white shadow-md px-6 py-2 flex items-center justify-between fixed top-0 left-0 w-full z-50">
+      {/* Left Section (Logo + Search Bar) */}
+      <div className="flex items-center space-x-4">
+        <img src={logo} alt="Swasti Bharat" className="h-12 w-12" />
+        <span className="text-xl font-bold text-[#4C1D3D]">Swasti Bharat</span>
 
-          {/* Search Bar */}
-          <div className="relative hidden md:flex ml-10 items-center w-[450px] h-11 px-4 py-1 rounded-full border border-gray-300 shadow-sm">
-            <AiOutlineSearch className="text-gray-900 text-xl font-bold" />
-            <input
-              type="text"
-              placeholder="Find your instructor or course"
-              className="bg-transparent outline-none text-sm w-full ml-7 placeholder-gray-500"
-            />
-          </div>
+        {/* Search Bar - Hidden in Mobile */}
+        <div className="relative hidden md:flex items-center w-[450px] h-11 px-4 py-1 ml-20  rounded-full border border-gray-300 shadow-sm">
+          <AiOutlineSearch className="text-gray-900 text-xl font-bold" />
+          <input
+            type="text"
+            placeholder="Find your instructor or course"
+            className="bg-transparent outline-none text-sm w-full ml-3 placeholder-gray-500"
+          />
         </div>
+      </div>
 
-        {/* Nav Links */}
-        <div className="hidden md:flex items-center space-x-6 mr-6">
-          <a href="#" className="text-gray-900 font-semibold hover:text-black">
+      {/* Desktop Navigation Links */}
+      <div className="hidden md:flex items-center space-x-6">
+        <a href="#" className="text-gray-900 font-semibold hover:text-black">
+          For Experts
+        </a>
+        <a href="#" className="text-gray-900 font-semibold hover:text-black">
+          Blog
+        </a>
+        <button className="flex items-center bg-black text-white px-3 py-2 rounded-[6px]">
+          <AiOutlineGift className="mr-3" />
+          Sign up
+        </button>
+        <button className="flex items-center space-x-2 p-2 border border-gray-300 rounded-full shadow-md bg-white">
+          <img
+            src="/profile.png"
+            alt="Profile"
+            className="h-6 w-6 rounded-full object-cover"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5 text-gray-700"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button className="md:hidden text-2xl p-2" onClick={() => setIsOpen(!isOpen)}>
+        <FiMenu />
+      </button>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className="absolute top-16 right-4 w-40 bg-white shadow-lg rounded-md p-3 flex flex-col space-y-2 z-50">
+          <a href="#" className="text-gray-700 hover:text-black">
             For Experts
           </a>
-          <a href="#" className="text-gray-900 font-semibold hover:text-black">
+          <a href="#" className="text-gray-700 hover:text-black">
             Blog
           </a>
-          <button className="flex items-center bg-black text-white px-3 py-2 rounded-[6px]">
-            <AiOutlineGift className="mr-3" />
+          <button className="bg-black text-white px-4 py-2 rounded-lg w-full">
             Sign up
           </button>
-          <button className="flex items-center space-x-2 p-2 border border-gray-300 rounded-full shadow-md bg-white">
-            <img
-              src="/profile.png"
-              alt="Profile"
-              className="h-6 w-6 rounded-full object-cover"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-gray-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <FiMenu />
-        </button>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="absolute top-16 right-4 w-40 bg-white shadow-lg rounded-md p-3 flex flex-col space-y-2 z-50">
-            <a href="#" className="text-gray-700 hover:text-black">
-              For Experts
-            </a>
-            <a href="#" className="text-gray-700 hover:text-black">
-              Blog
-            </a>
-            <button className="bg-black text-white px-4 py-2 rounded-lg w-full">
-              Sign up
-            </button>
-          </div>
-        )}
-      </nav>
-
+      )}
+    </nav>
       {/* Privacy Policy Header */}
       <div className="w-[95%] mx-auto flex flex-col items-center justify-center bg-gradient-to-r from-[#4C1D3D] to-[#913674] text-white py-10 h-50 rounded-lg mt-20">
         <h1 className="text-3xl font-sans font-normal">Privacy policy</h1>
@@ -150,9 +142,14 @@ const PrivacyPolicy = () => {
         </div>
 
         {/* Right Section - Sticky Image */}
-        <div className={`lg:w-[40%] flex justify-end ${isFixed ? "fixed top-20 right-20" : ""}`}>
-          <img src={image} alt="Privacy Policy" className="w-[500px] h-[350px] object-cover" />
-        </div>
+        {/* Right Section - Sticky Image */}
+<div className="lg:w-[40%] flex justify-end hidden md:block">
+  <img 
+    src={image} 
+    alt="Privacy Policy" 
+    className="w-[500px] h-auto object-cover lg:sticky lg:top-20"
+  />
+</div>
       </div>
     </>
   );
